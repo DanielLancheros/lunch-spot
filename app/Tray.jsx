@@ -1,23 +1,38 @@
 import { View, Text, StyleSheet, TouchableOpacity, TouchableWithoutFeedback } from "react-native"
 
-export default function Tray() {
+export default function Tray({setSelectRestaurant}) {
 
     const choose = () => {
         const chosen = Math.random()
         setSelectRestaurant(chosen)
     }
-    
+
+    const clear = () => {
+        setSelectRestaurant(0)
+    }
+
     return (
         <View style={styles.tray}>
-            <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Shuffle</Text>
-            </TouchableOpacity>
+            <View style={styles.buttonList}>
+                <TouchableOpacity onPress={choose} style={styles.button}>
+                    <Text style={styles.buttonText}>Shuffle</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={clear} style={styles.resetButton}>
+                    <Text style={styles.buttonText}>Reset</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    button : {
+    buttonList: {
+        width: '80%',
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+    },
+    button: {
         backgroundColor: 'pink',
         paddingHorizontal: 24,
         paddingVertical: 8,
@@ -26,6 +41,16 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: 'black', 
     },
+
+    resetButton: {
+        backgroundColor: 'grey',
+        paddingHorizontal: 24,
+        paddingVertical: 8,
+        borderRadius: 4,
+        borderStyle: 'solid',
+        borderWidth: 1,
+    },
+
     buttonText: {
         color: 'white',
         fontSize: 20,
