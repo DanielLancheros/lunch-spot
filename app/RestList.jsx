@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     loadingText: {
         padding: 8,
         fontSize: 24,
-        color: `#eee`,
+        color: 'blue',
         textAlign: 'center',
     },
     scrollingList : {
